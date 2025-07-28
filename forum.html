@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум - CraftWorld</title>
+    <meta name="description" content="Форум сервера CraftWorld - общайтесь с другими игроками, задавайте вопросы и делитесь опытом">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/forum.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="CraftWorld" class="logo-img">
+                    <span class="logo-text">CraftWorld</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link active">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Войти</a>
+                    <a href="register.html" class="btn btn-primary">Регистрация</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="forum-main">
+        <!-- Forum Header -->
+        <section class="forum-header">
+            <div class="container">
+                <div class="forum-header-content">
+                    <div class="forum-title">
+                        <h1>Форум CraftWorld</h1>
+                        <p>Место для общения игроков нашего сервера</p>
+                    </div>
+                    <div class="forum-actions">
+                        <button class="btn btn-primary" onclick="showNewTopicModal()">
+                            <span class="btn-icon">✏️</span>
+                            Создать тему
+                        </button>
+                        <div class="forum-search">
+                            <input type="text" placeholder="Поиск по форуму..." class="search-input" id="forum-search">
+                            <button class="search-btn">🔍</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="forum-stats">
+                    <div class="stat">
+                        <span class="stat-number">1,247</span>
+                        <span class="stat-label">Тем</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">8,532</span>
+                        <span class="stat-label">Сообщений</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">423</span>
+                        <span class="stat-label">Участников</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">47</span>
+                        <span class="stat-label">Онлайн</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Categories -->
+        <section class="forum-categories">
+            <div class="container">
+                <div class="categories-grid">
+                    <!-- General Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">💬</div>
+                            <div class="category-info">
+                                <h3>Общее обсуждение</h3>
+                                <p>Общие вопросы и обсуждения о сервере</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">342 темы</span>
+                                <span class="posts-count">2,156 сообщений</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Новые возможности сервера в 2024</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">CraftMaster</span>
+                                    <span class="topic-time">2 часа назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Предложения по улучшению</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">BuilderPro</span>
+                                    <span class="topic-time">5 часов назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">❓</div>
+                            <div class="category-info">
+                                <h3>Помощь новичкам</h3>
+                                <p>Вопросы и ответы для начинающих игроков</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">156 тем</span>
+                                <span class="posts-count">987 сообщений</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Как начать играть на сервере?</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">Helper123</span>
+                                    <span class="topic-time">1 час назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Гайд по командам сервера</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">AdminBot</span>
+                                    <span class="topic-time">3 часа назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Builds Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">🏗️</div>
+                            <div class="category-info">
+                                <h3>Постройки</h3>
+                                <p>Демонстрация построек и архитектурные идеи</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">289 тем</span>
+                                <span class="posts-count">1,543 сообщения</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Мой средневековый замок</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">ArchitectX</span>
+                                    <span class="topic-time">30 минут назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Современный город - прогресс</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">CityBuilder</span>
+                                    <span class="topic-time">4 часа назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Events Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">🎉</div>
+                            <div class="category-info">
+                                <h3>События и конкурсы</h3>
+                                <p>Информация о событиях и конкурсах сервера</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">87 тем</span>
+                                <span class="posts-count">654 сообщения</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Зимний конкурс построек</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">EventManager</span>
+                                    <span class="topic-time">6 часов назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Результаты конкурса скинов</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">ModeratorAlex</span>
+                                    <span class="topic-time">1 день назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">💰</div>
+                            <div class="category-info">
+                                <h3>Торговля</h3>
+                                <p>Покупка, продажа и обмен предметами</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">198 тем</span>
+                                <span class="posts-count">1,245 сообщений</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Продаю алмазную броню</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">Trader99</span>
+                                    <span class="topic-time">15 минут назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Куплю редкие блоки</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">Collector</span>
+                                    <span class="topic-time">2 часа назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bug Reports Category -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon">🐛</div>
+                            <div class="category-info">
+                                <h3>Баги и предложения</h3>
+                                <p>Сообщения об ошибках и предложения по улучшению</p>
+                            </div>
+                            <div class="category-stats">
+                                <span class="topics-count">125 тем</span>
+                                <span class="posts-count">432 сообщения</span>
+                            </div>
+                        </div>
+                        <div class="recent-topics">
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Проблема с телепортацией</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">BugHunter</span>
+                                    <span class="topic-time">45 минут назад</span>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <a href="#" class="topic-title">Предложение: новые команды</a>
+                                <div class="topic-meta">
+                                    <span class="topic-author">Innovator</span>
+                                    <span class="topic-time">3 часа назад</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <div class="container">
+                <h2 class="section-title">Последняя активность</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="images/avatars/user1.png" alt="CraftMaster">
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-header">
+                                <span class="activity-user">CraftMaster</span>
+                                <span class="activity-action">создал новую тему</span>
+                                <a href="#" class="activity-topic">"Новые возможности сервера в 2024"</a>
+                            </div>
+                            <div class="activity-meta">
+                                <span class="activity-category">Общее обсуждение</span>
+                                <span class="activity-time">2 часа назад</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="images/avatars/user2.png" alt="BuilderPro">
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-header">
+                                <span class="activity-user">BuilderPro</span>
+                                <span class="activity-action">ответил в теме</span>
+                                <a href="#" class="activity-topic">"Гайд по командам сервера"</a>
+                            </div>
+                            <div class="activity-meta">
+                                <span class="activity-category">Помощь новичкам</span>
+                                <span class="activity-time">3 часа назад</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="images/avatars/user3.png" alt="ArchitectX">
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-header">
+                                <span class="activity-user">ArchitectX</span>
+                                <span class="activity-action">поделился постройкой</span>
+                                <a href="#" class="activity-topic">"Мой средневековый замок"</a>
+                            </div>
+                            <div class="activity-meta">
+                                <span class="activity-category">Постройки</span>
+                                <span class="activity-time">4 часа назад</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-more">
+                    <button class="btn btn-secondary">Показать больше</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Users -->
+        <section class="online-users">
+            <div class="container">
+                <h3>Сейчас на форуме (47)</h3>
+                <div class="users-list">
+                    <div class="user-badge admin">
+                        <img src="images/avatars/admin.png" alt="Admin">
+                        <span>Admin</span>
+                    </div>
+                    <div class="user-badge moderator">
+                        <img src="images/avatars/mod1.png" alt="ModeratorAlex">
+                        <span>ModeratorAlex</span>
+                    </div>
+                    <div class="user-badge vip">
+                        <img src="images/avatars/vip1.png" alt="VIPPlayer">
+                        <span>VIPPlayer</span>
+                    </div>
+                    <div class="user-badge">
+                        <img src="images/avatars/user4.png" alt="NewPlayer">
+                        <span>NewPlayer</span>
+                    </div>
+                    <div class="user-badge">
+                        <img src="images/avatars/user5.png" alt="CraftFan">
+                        <span>CraftFan</span>
+                    </div>
+                    <div class="users-more">+42 других</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- New Topic Modal -->
+    <div id="new-topic-modal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeNewTopicModal()"></div>
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Создать новую тему</h3>
+                <button class="modal-close" onclick="closeNewTopicModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="new-topic-form">
+                    <div class="form-group">
+                        <label for="topic-category">Категория</label>
+                        <select id="topic-category" name="category" class="form-input" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="general">Общее обсуждение</option>
+                            <option value="help">Помощь новичкам</option>
+                            <option value="builds">Постройки</option>
+                            <option value="events">События и конкурсы</option>
+                            <option value="trading">Торговля</option>
+                            <option value="bugs">Баги и предложения</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic-title">Заголовок темы</label>
+                        <input type="text" id="topic-title" name="title" class="form-input" required 
+                               placeholder="Введите заголовок темы" maxlength="100">
+                        <div class="field-hint">Максимум 100 символов</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topic-content">Содержание</label>
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn" onclick="formatText('bold')"><strong>B</strong></button>
+                            <button type="button" class="editor-btn" onclick="formatText('italic')"><em>I</em></button>
+                            <button type="button" class="editor-btn" onclick="formatText('underline')"><u>U</u></button>
+                            <button type="button" class="editor-btn" onclick="insertLink()">🔗</button>
+                            <button type="button" class="editor-btn" onclick="insertImage()">🖼️</button>
+                            <button type="button" class="editor-btn" onclick="insertCode()">💻</button>
+                        </div>
+                        <textarea id="topic-content" name="content" class="form-input editor" required 
+                                  placeholder="Напишите содержание вашей темы..." rows="10"></textarea>
+                        <div class="field-hint">Поддерживается markdown разметка</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="notify" id="notify-replies">
+                            <span class="checkmark"></span>
+                            Уведомлять о новых ответах в теме
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeNewTopicModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="createTopic()">Создать тему</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CraftWorld</h4>
+                    <p>Лучший Minecraft сервер для всех любителей игры. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="help.html">Помощь</a></li>
+                        <li><a href="ban-appeal.html">Разбан</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Discord</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CraftWorld. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+</html>
