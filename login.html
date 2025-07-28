@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - CraftWorld</title>
+    <meta name="description" content="Войдите в свой аккаунт на сервере CraftWorld">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="CraftWorld" class="logo-img">
+                    <span class="logo-text">CraftWorld</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline active">Войти</a>
+                    <a href="register.html" class="btn btn-primary">Регистрация</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <h1>Добро пожаловать обратно!</h1>
+                    <p>Войдите в свой аккаунт, чтобы получить доступ ко всем возможностям</p>
+                </div>
+
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email или ник</label>
+                        <input type="text" id="login-email" name="login" class="form-input" required 
+                               placeholder="Введите email или игровой ник">
+                        <div class="input-icon">👤</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input type="password" id="password" name="password" class="form-input" required 
+                               placeholder="Введите пароль">
+                        <div class="input-icon">🔒</div>
+                        <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span class="checkmark"></span>
+                            Запомнить меня
+                        </label>
+                        <a href="forgot-password.html" class="forgot-link">Забыли пароль?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large auth-submit">
+                        Войти в аккаунт
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>или</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="btn-social btn-social-vk" onclick="socialLogin('vk')">
+                            <span class="social-icon">VK</span>
+                            Войти через VK
+                        </button>
+                        <button type="button" class="btn-social btn-social-discord" onclick="socialLogin('discord')">
+                            <span class="social-icon">💬</span>
+                            Войти через Discord
+                        </button>
+                        <button type="button" class="btn-social btn-social-google" onclick="socialLogin('google')">
+                            <span class="social-icon">G</span>
+                            Войти через Google
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+                </div>
+            </div>
+
+            <div class="auth-info">
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h3>Играйте с друзьями</h3>
+                    <p>Присоединяйтесь к тысячам игроков в нашем сообществе</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">💎</div>
+                    <h3>Уникальные возможности</h3>
+                    <p>Получите доступ к эксклюзивным функциям и контенту</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🏆</div>
+                    <h3>Достижения</h3>
+                    <p>Отслеживайте свой прогресс и соревнуйтесь с другими</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two-Factor Authentication Modal -->
+        <div id="2fa-modal" class="modal" style="display: none;">
+            <div class="modal-overlay" onclick="close2FAModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Двухфакторная аутентификация</h3>
+                    <button class="modal-close" onclick="close2FAModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Введите код из приложения аутентификатора:</p>
+                    <div class="verification-code">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 0)">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 1)">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 2)">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 3)">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 4)">
+                        <input type="text" maxlength="1" class="code-input" oninput="moveToNext(this, 5)">
+                    </div>
+                    <div class="verification-help">
+                        <p>Не получили код? <a href="#" onclick="resend2FACode()">Отправить повторно</a></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="close2FAModal()">Отмена</button>
+                    <button class="btn btn-primary" onclick="verify2FA()">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CraftWorld</h4>
+                    <p>Лучший Minecraft сервер для всех любителей игры. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="help.html">Помощь</a></li>
+                        <li><a href="ban-appeal.html">Разбан</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Discord</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CraftWorld. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

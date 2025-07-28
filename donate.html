@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Донат - CraftWorld</title>
+    <meta name="description" content="Поддержите развитие сервера CraftWorld и получите уникальные привилегии и возможности">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/donate.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="CraftWorld" class="logo-img">
+                    <span class="logo-text">CraftWorld</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link active">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Войти</a>
+                    <a href="register.html" class="btn btn-primary">Регистрация</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="donate-main">
+        <!-- Hero Section -->
+        <section class="donate-hero">
+            <div class="container">
+                <h1>Поддержите сервер CraftWorld</h1>
+                <p>Ваша поддержка помогает нам развивать сервер и добавлять новые возможности</p>
+                <div class="donate-stats">
+                    <div class="stat">
+                        <span class="stat-number">₽12,450</span>
+                        <span class="stat-label">Собрано в этом месяце</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">₽20,000</span>
+                        <span class="stat-label">Цель на месяц</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 62%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Plans -->
+        <section class="donation-plans">
+            <div class="container">
+                <h2 class="section-title">Выберите привилегию</h2>
+                <div class="plans-grid">
+                    <!-- VIP Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>VIP</h3>
+                            <div class="plan-price">
+                                <span class="price">₽299</span>
+                                <span class="period">навсегда</span>
+                            </div>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li>✅ Цветной ник в чате</li>
+                                <li>✅ Доступ к VIP зонам</li>
+                                <li>✅ 5 дополнительных точек дома</li>
+                                <li>✅ Приоритет входа на сервер</li>
+                                <li>✅ Команда /fly в лобби</li>
+                                <li>✅ Уникальные эмоции</li>
+                                <li>✅ Скидка 10% в магазине</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary plan-btn" onclick="selectPlan('vip', 299)">Выбрать VIP</button>
+                    </div>
+
+                    <!-- Premium Plan -->
+                    <div class="plan-card popular">
+                        <div class="popular-badge">Популярный</div>
+                        <div class="plan-header">
+                            <h3>Premium</h3>
+                            <div class="plan-price">
+                                <span class="price">₽599</span>
+                                <span class="period">навсегда</span>
+                            </div>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li>✅ Все возможности VIP</li>
+                                <li>✅ Золотой ник в чате</li>
+                                <li>✅ 10 дополнительных точек дома</li>
+                                <li>✅ Команда /fly везде</li>
+                                <li>✅ Доступ к Premium зонам</li>
+                                <li>✅ Уникальные питомцы</li>
+                                <li>✅ Скидка 20% в магазине</li>
+                                <li>✅ Приватные сообщения</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary plan-btn" onclick="selectPlan('premium', 599)">Выбрать Premium</button>
+                    </div>
+
+                    <!-- Elite Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Elite</h3>
+                            <div class="plan-price">
+                                <span class="price">₽999</span>
+                                <span class="period">навсегда</span>
+                            </div>
+                        </div>
+                        <div class="plan-features">
+                            <ul>
+                                <li>✅ Все возможности Premium</li>
+                                <li>✅ Радужный ник в чате</li>
+                                <li>✅ 20 дополнительных точек дома</li>
+                                <li>✅ Команды модерации</li>
+                                <li>✅ Доступ к Elite зонам</li>
+                                <li>✅ Эксклюзивные скины</li>
+                                <li>✅ Скидка 30% в магазине</li>
+                                <li>✅ Персональная поддержка</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-primary plan-btn" onclick="selectPlan('elite', 999)">Выбрать Elite</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Items -->
+        <section class="additional-items">
+            <div class="container">
+                <h2 class="section-title">Дополнительные товары</h2>
+                <div class="items-grid">
+                    <div class="item-card">
+                        <div class="item-icon">💎</div>
+                        <h3>Игровая валюта</h3>
+                        <p>Получите дополнительные монеты для покупок в игре</p>
+                        <div class="item-options">
+                            <button class="item-option" onclick="selectItem('coins_1000', 99)">
+                                <span>1,000 монет</span>
+                                <span class="price">₽99</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('coins_5000', 399)">
+                                <span>5,000 монет</span>
+                                <span class="price">₽399</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('coins_10000', 699)">
+                                <span>10,000 монет</span>
+                                <span class="price">₽699</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-icon">🎒</div>
+                        <h3>Дополнительные слоты</h3>
+                        <p>Увеличьте размер инвентаря и сундуков</p>
+                        <div class="item-options">
+                            <button class="item-option" onclick="selectItem('slots_9', 199)">
+                                <span>+9 слотов</span>
+                                <span class="price">₽199</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('slots_18', 349)">
+                                <span>+18 слотов</span>
+                                <span class="price">₽349</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('slots_27', 499)">
+                                <span>+27 слотов</span>
+                                <span class="price">₽499</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-icon">🏠</div>
+                        <h3>Точки дома</h3>
+                        <p>Дополнительные точки телепортации</p>
+                        <div class="item-options">
+                            <button class="item-option" onclick="selectItem('homes_5', 149)">
+                                <span>+5 точек</span>
+                                <span class="price">₽149</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('homes_10', 249)">
+                                <span>+10 точек</span>
+                                <span class="price">₽249</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('homes_20', 399)">
+                                <span>+20 точек</span>
+                                <span class="price">₽399</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-icon">🛡️</div>
+                        <h3>Защита территории</h3>
+                        <p>Дополнительные блоки для защиты</p>
+                        <div class="item-options">
+                            <button class="item-option" onclick="selectItem('protect_1000', 99)">
+                                <span>1,000 блоков</span>
+                                <span class="price">₽99</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('protect_5000', 399)">
+                                <span>5,000 блоков</span>
+                                <span class="price">₽399</span>
+                            </button>
+                            <button class="item-option" onclick="selectItem('protect_10000', 699)">
+                                <span>10,000 блоков</span>
+                                <span class="price">₽699</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section" id="payment-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Оформление покупки</h2>
+                <div class="payment-container">
+                    <div class="payment-form">
+                        <h3>Данные для покупки</h3>
+                        <form id="donation-form">
+                            <div class="form-group">
+                                <label for="minecraft-nick">Ник в Minecraft</label>
+                                <input type="text" id="minecraft-nick" name="minecraft-nick" class="form-input" required 
+                                       placeholder="Введите ваш игровой ник">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" required 
+                                       placeholder="your@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="promo-code">Промокод (необязательно)</label>
+                                <input type="text" id="promo-code" name="promo-code" class="form-input" 
+                                       placeholder="Введите промокод">
+                                <button type="button" class="btn btn-secondary" onclick="applyPromoCode()">Применить</button>
+                            </div>
+
+                            <div class="payment-methods">
+                                <h4>Способ оплаты</h4>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="card" checked>
+                                        <span class="payment-icon">💳</span>
+                                        <span>Банковская карта</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="qiwi">
+                                        <span class="payment-icon">🥝</span>
+                                        <span>QIWI</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="yandex">
+                                        <span class="payment-icon">💰</span>
+                                        <span>ЮMoney</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment-method" value="webmoney">
+                                        <span class="payment-icon">🌐</span>
+                                        <span>WebMoney</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-large">
+                                Оплатить <span id="total-price">₽0</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="order-summary">
+                        <h3>Детали заказа</h3>
+                        <div class="order-item" id="selected-item">
+                            <span class="item-name">Выберите товар</span>
+                            <span class="item-price">₽0</span>
+                        </div>
+                        <div class="order-discount" id="discount-info" style="display: none;">
+                            <span class="discount-name">Скидка по промокоду</span>
+                            <span class="discount-amount">-₽0</span>
+                        </div>
+                        <div class="order-total">
+                            <span class="total-label">Итого к оплате:</span>
+                            <span class="total-amount" id="final-total">₽0</span>
+                        </div>
+                        
+                        <div class="order-benefits">
+                            <h4>Что вы получите:</h4>
+                            <ul id="benefits-list">
+                                <li>Выберите привилегию для просмотра преимуществ</li>
+                            </ul>
+                        </div>
+
+                        <div class="support-info">
+                            <h4>Нужна помощь?</h4>
+                            <p>Свяжитесь с администрацией:</p>
+                            <div class="support-contacts">
+                                <a href="#" class="support-link">
+                                    <span class="support-icon">💬</span>
+                                    Discord
+                                </a>
+                                <a href="#" class="support-link">
+                                    <span class="support-icon">📱</span>
+                                    Telegram
+                                </a>
+                                <a href="#" class="support-link">
+                                    <span class="support-icon">📧</span>
+                                    Email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Как быстро я получу привилегии?</h3>
+                        <p>Привилегии выдаются автоматически в течение 5-10 минут после успешной оплаты. Если привилегии не пришли, обратитесь к администрации.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Можно ли вернуть деньги?</h3>
+                        <p>Возврат средств возможен только в случае технических проблем с нашей стороны. Обратитесь к администрации для решения спорных вопросов.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Привилегии действуют навсегда?</h3>
+                        <p>Да, все привилегии покупаются навсегда и не имеют срока действия. Они сохраняются даже при смене ника.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Можно ли передать привилегии другому игроку?</h3>
+                        <p>Нет, привилегии привязываются к конкретному аккаунту и не могут быть переданы другому игроку.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Что делать, если я ошибся с ником?</h3>
+                        <p>Если вы указали неправильный ник, немедленно свяжитесь с администрацией. Мы поможем исправить ошибку в течение 24 часов.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Есть ли скидки для постоянных игроков?</h3>
+                        <p>Да, мы регулярно проводим акции и раздаем промокоды. Следите за новостями в Discord и на форуме.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CraftWorld</h4>
+                    <p>Лучший Minecraft сервер для всех любителей игры. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="help.html">Помощь</a></li>
+                        <li><a href="ban-appeal.html">Разбан</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Discord</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CraftWorld. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/donate.js"></script>
+</body>
+</html>
