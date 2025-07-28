@@ -376,6 +376,46 @@
     width: 95%;
 }
 
+/* Moderation Notice */
+.moderation-notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space);
+    padding: var(--space) var(--space-lg);
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid var(--warning);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-lg);
+    animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.moderation-notice .notice-icon {
+    font-size: 1.5rem;
+    color: var(--warning);
+}
+
+.moderation-notice .notice-content {
+    flex: 1;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #856404;
+}
+
+.moderation-notice strong {
+    color: var(--warning);
+}
+
 .editor-toolbar {
     display: flex;
     gap: 0.5rem;

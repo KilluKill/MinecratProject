@@ -7,16 +7,22 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeForum() {
     // Initialize search functionality
     initializeSearch();
-    
+
     // Initialize animations
     initializeAnimations();
-    
+
     // Initialize category cards interactions
     initializeCategoryCards();
-    
+
     // Initialize activity updates
     initializeActivityUpdates();
     
+    // Initialize real forum stats
+    initializeForumStats();
+    
+    // Update user interface based on login status
+    updateUserInterface();
+
     console.log('Forum initialized successfully!');
 }
 
@@ -118,24 +124,34 @@ function performFullSearch(query) {
 
 // New Topic Modal Functions
 window.showNewTopicModal = function() {
-    // Check if user is logged in (simulate)
+    // Check if user is logged in
     if (!isUserLoggedIn()) {
-        showNotification('Войдите в аккаунт, чтобы создать тему', 'error');
+        Server17yotk.showNotification('Для создания темы необходимо войти в аккаунт', 'warning', 5000);
         setTimeout(() => {
             window.location.href = 'login.html';
         }, 2000);
         return;
     }
-    
+
+    // Check user permissions
+    const userRole = getUserRole();
+    if (userRole === 'banned') {
+        Server17yotk.showNotification('Вы не можете создавать темы', 'error');
+        return;
+    }
+
     const modal = document.getElementById('new-topic-modal');
     if (modal) {
         modal.style.display = 'flex';
-        
+
         // Focus on category select
         const categorySelect = document.getElementById('topic-category');
         if (categorySelect) {
             categorySelect.focus();
         }
+        
+        // Add moderation notice
+        addModerationNotice();
     }
 };
 
@@ -445,8 +461,260 @@ function openTopic(topicId) {
 
 // Utility functions
 function isUserLoggedIn() {
-    // Simulate user login check
     return localStorage.getItem('user_token') !== null;
+}
+
+function getUserRole() {
+    const userData = localStorage.getItem('user_data');
+    if (userData) {
+        try {
+            const user = JSON.parse(userData);
+            return user.role || 'user';
+        } catch (e) {
+            return 'user';
+        }
+    }
+    return 'guest';
+}
+
+function getUserName() {
+    const userData = localStorage.getItem('user_data');
+    if (userData) {
+        try {
+            const user = JSON.parse(userData);
+            return user.username || 'Гость';
+        } catch (e) {
+            return 'Гость';
+        }
+    }
+    return 'Гость';
+}
+
+function addModerationNotice() {
+    const modal = document.getElementById('new-topic-modal');
+    const modalBody = modal.querySelector('.modal-body');
+    
+    // Remove existing notice
+    const existingNotice = modal.querySelector('.moderation-notice');
+    if (existingNotice) {
+        existingNotice.remove();
+    }
+    
+    // Add new notice
+    const notice = document.createElement('div');
+    notice.className = 'moderation-notice';
+    notice.innerHTML = `
+        <div class="notice-icon">⚠️</div>
+        <div class="notice-content">
+            <strong>Внимание!</strong> Все темы проходят модерацию перед публикацией. 
+            Убедитесь, что ваша тема соответствует правилам форума.
+        </div>
+    `;
+    
+    modalBody.insertBefore(notice, modalBody.firstChild);
+}
+
+// Real Forum Statistics
+function initializeForumStats() {
+    updateForumStats();
+    // Update stats every 5 minutes
+    setInterval(updateForumStats, 300000);
+}
+
+async function updateForumStats() {
+    try {
+        const stats = await fetchForumStats();
+        updateStatsDisplay(stats);
+    } catch (error) {
+        console.error('Failed to update forum stats:', error);
+    }
+}
+
+async function fetchForumStats() {
+    // Simulate API call to get real forum statistics
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const baseStats = {
+                topics: 1247,
+                posts: 8532,
+                members: 423,
+                online: Math.floor(Math.random() * 20) + 35 // 35-55 online
+            };
+            
+            // Add some realistic variation
+            const variation = Math.floor(Math.random() * 10) - 5;
+            baseStats.topics += variation;
+            baseStats.posts += variation * 3;
+            baseStats.members += Math.floor(variation / 2);
+            
+            resolve(baseStats);
+        }, 500);
+    });
+}
+
+function updateStatsDisplay(stats) {
+    // Update forum header stats
+    const statElements = document.querySelectorAll('.forum-stats .stat');
+    if (statElements.length >= 4) {
+        animateNumber(statElements[0].querySelector('.stat-number'), stats.topics);
+        animateNumber(statElements[1].querySelector('.stat-number'), stats.posts);
+        animateNumber(statElements[2].querySelector('.stat-number'), stats.members);
+        animateNumber(statElements[3].querySelector('.stat-number'), stats.online);
+    }
+    
+    // Update category stats with realistic distribution
+    updateCategoryStats(stats);
+}
+
+function updateCategoryStats(stats) {
+    const categoryCards = document.querySelectorAll('.category-card');
+    const categoryDistribution = [
+        { topics: Math.floor(stats.topics * 0.28), posts: Math.floor(stats.posts * 0.25) }, // General
+        { topics: Math.floor(stats.topics * 0.15), posts: Math.floor(stats.posts * 0.12) }, // Help
+        { topics: Math.floor(stats.topics * 0.23), posts: Math.floor(stats.posts * 0.18) }, // Builds
+        { topics: Math.floor(stats.topics * 0.08), posts: Math.floor(stats.posts * 0.08) }, // Events
+        { topics: Math.floor(stats.topics * 0.16), posts: Math.floor(stats.posts * 0.15) }, // Trading
+        { topics: Math.floor(stats.topics * 0.10), posts: Math.floor(stats.posts * 0.22) }  // Bugs
+    ];
+    
+    categoryCards.forEach((card, index) => {
+        if (categoryDistribution[index]) {
+            const statsEl = card.querySelector('.category-stats');
+            if (statsEl) {
+                const dist = categoryDistribution[index];
+                statsEl.innerHTML = `
+                    <span class="topics-count">${dist.topics} тем</span>
+                    <span class="posts-count">${dist.posts} сообщений</span>
+                `;
+            }
+        }
+    });
+}
+
+function animateNumber(element, targetValue) {
+    if (!element) return;
+    
+    const currentValue = parseInt(element.textContent) || 0;
+    const difference = targetValue - currentValue;
+    const steps = 30;
+    const stepValue = difference / steps;
+    let currentStep = 0;
+    
+    const animation = setInterval(() => {
+        currentStep++;
+        const newValue = Math.round(currentValue + (stepValue * currentStep));
+        element.textContent = newValue.toLocaleString();
+        
+        if (currentStep >= steps) {
+            element.textContent = targetValue.toLocaleString();
+            clearInterval(animation);
+        }
+    }, 50);
+}
+
+function updateUserInterface() {
+    const isLoggedIn = isUserLoggedIn();
+    const userRole = getUserRole();
+    const userName = getUserName();
+    
+    // Update create topic button visibility
+    const createTopicBtn = document.querySelector('.forum-actions .btn-primary');
+    if (createTopicBtn) {
+        if (!isLoggedIn) {
+            createTopicBtn.style.opacity = '0.6';
+            createTopicBtn.title = 'Войдите для создания тем';
+        } else {
+            createTopicBtn.style.opacity = '1';
+            createTopicBtn.title = 'Создать новую тему';
+        }
+    }
+    
+    // Update online users section if user is logged in
+    if (isLoggedIn) {
+        updateOnlineUsersList(userName, userRole);
+    }
+}
+
+function updateOnlineUsersList(userName, userRole) {
+    const usersList = document.querySelector('.users-list');
+    if (!usersList) return;
+    
+    // Check if user is already in the list
+    const existingUser = usersList.querySelector(`[data-username="${userName}"]`);
+    if (existingUser) return;
+    
+    // Add current user to online list
+    const userBadge = document.createElement('div');
+    userBadge.className = `user-badge ${userRole}`;
+    userBadge.setAttribute('data-username', userName);
+    userBadge.innerHTML = `
+        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=${userName.charAt(0).toUpperCase()}" alt="${userName}">
+        <span>${userName}</span>
+    `;
+    
+    // Insert after admin/moderator users but before regular users
+    const regularUsers = usersList.querySelectorAll('.user-badge:not(.admin):not(.moderator):not(.vip)');
+    if (regularUsers.length > 0) {
+        usersList.insertBefore(userBadge, regularUsers[0]);
+    } else {
+        usersList.insertBefore(userBadge, usersList.querySelector('.users-more'));
+    }
+}
+
+// Enhanced topic creation with moderation
+window.createTopic = async function() {
+    const form = document.getElementById('new-topic-form');
+    const formData = new FormData(form);
+
+    const topicData = {
+        category: formData.get('category'),
+        title: formData.get('title'),
+        content: formData.get('content'),
+        notify: formData.get('notify') === 'on',
+        author: getUserName(),
+        status: 'pending_moderation' // All topics require moderation
+    };
+
+    // Validate form
+    if (!validateTopicForm(topicData)) {
+        return;
+    }
+
+    const createButton = document.querySelector('#new-topic-modal .btn-primary');
+    Server17yotk.setButtonLoading(createButton, true);
+
+    try {
+        await submitNewTopicForModeration(topicData);
+
+        Server17yotk.showNotification(
+            'Тема отправлена на модерацию! Она появится на форуме после одобрения администратором.', 
+            'success', 
+            8000
+        );
+        closeNewTopicModal();
+
+    } catch (error) {
+        Server17yotk.showNotification('Ошибка при создании темы. Попробуйте позже.', 'error');
+    } finally {
+        Server17yotk.setButtonLoading(createButton, false);
+    }
+};
+
+async function submitNewTopicForModeration(topicData) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // Simulate moderation queue submission
+            if (Math.random() > 0.05) { // 95% success rate
+                resolve({ 
+                    id: Date.now(), 
+                    status: 'pending_moderation',
+                    message: 'Topic submitted for moderation' 
+                });
+            } else {
+                reject(new Error('Moderation system temporarily unavailable'));
+            }
+        }, 2000);
+    });
 }
 
 // API simulation functions (replace with real API calls)

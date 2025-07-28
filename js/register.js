@@ -365,7 +365,7 @@ async function checkEmailAvailabilityAPI(email) {
     return new Promise((resolve) => {
         setTimeout(() => {
             // Simulate some taken emails
-            const takenEmails = ['admin@craftworld.ru', 'test@example.com', 'existing@example.com'];
+            const takenEmails = ['admin@17yotk.ru', 'test@example.com', 'existing@example.com'];
             resolve(!takenEmails.includes(email.toLowerCase()));
         }, 1000);
     });

@@ -488,7 +488,7 @@ function debounce(func, wait, immediate) {
     };
 }
 
-// Global CraftWorld utilities
+// Global 17yotk utilities
 window.Server17yotk = {
     showNotification,
     copyToClipboard: window.copyIP,
