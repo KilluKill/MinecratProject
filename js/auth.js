@@ -543,4 +543,139 @@ async function simulateForgotPassword(email) {
     });
 }
 
-console.log('Auth system initialized successfully!');
+// Security Functions
+function sanitizeInput(input) {
+    if (typeof input !== 'string') return input;
+    return input
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/javascript:/gi, '')
+        .replace(/on\w+\s*=/gi, '')
+        .trim();
+}
+
+function validateLoginData(data) {
+    if (!data.login || data.login.length < 3) {
+        Server17yotk.showNotification('Логин должен содержать минимум 3 символа', 'error');
+        return false;
+    }
+    
+    if (!data.password || data.password.length < 6) {
+        Server17yotk.showNotification('Пароль должен содержать минимум 6 символов', 'error');
+        return false;
+    }
+    
+    // Check for suspicious patterns
+    if (data.login.includes('<') || data.login.includes('>')) {
+        Server17yotk.showNotification('Недопустимые символы в логине', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+function checkRateLimit(action, identifier) {
+    const key = `rateLimit_${action}_${identifier}`;
+    const attempts = JSON.parse(localStorage.getItem(key) || '[]');
+    const now = Date.now();
+    const fiveMinutesAgo = now - 5 * 60 * 1000;
+    
+    // Clean old attempts
+    const recentAttempts = attempts.filter(timestamp => timestamp > fiveMinutesAgo);
+    
+    // Check if too many attempts
+    if (recentAttempts.length >= 5) {
+        return false;
+    }
+    
+    return true;
+}
+
+function recordFailedLogin(identifier) {
+    const key = `rateLimit_login_${identifier}`;
+    const attempts = JSON.parse(localStorage.getItem(key) || '[]');
+    attempts.push(Date.now());
+    localStorage.setItem(key, JSON.stringify(attempts));
+}
+
+function clearRateLimit(action, identifier) {
+    const key = `rateLimit_${action}_${identifier}`;
+    localStorage.removeItem(key);
+}
+
+async function generateDeviceFingerprint() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.textBaseline = 'top';
+    ctx.font = '14px Arial';
+    ctx.fillText('Device fingerprint', 2, 2);
+    
+    const fingerprint = {
+        screen: `${screen.width}x${screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        language: navigator.language,
+        canvas: canvas.toDataURL(),
+        userAgent: navigator.userAgent.slice(0, 100),
+        timestamp: Date.now()
+    };
+    
+    return btoa(JSON.stringify(fingerprint)).slice(0, 32);
+}
+
+function logSecurityEvent(eventType, data) {
+    const securityLog = JSON.parse(localStorage.getItem('security_log') || '[]');
+    
+    securityLog.push({
+        type: eventType,
+        data: data,
+        timestamp: new Date().toISOString()
+    });
+    
+    // Keep only last 100 events
+    if (securityLog.length > 100) {
+        securityLog.splice(0, securityLog.length - 100);
+    }
+    
+    localStorage.setItem('security_log', JSON.stringify(securityLog));
+}
+
+function generateSecureToken() {
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+// Enhanced input security
+function addSecureInputHandlers() {
+    const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"], textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('input', function(e) {
+            if (e.target.type !== 'password') {
+                const sanitized = sanitizeInput(e.target.value);
+                if (sanitized !== e.target.value) {
+                    e.target.value = sanitized;
+                    Server17yotk.showNotification('Недопустимые символы были удалены', 'warning', 3000);
+                }
+            }
+        });
+        
+        input.addEventListener('paste', function(e) {
+            if (e.target.type !== 'password') {
+                setTimeout(() => {
+                    const sanitized = sanitizeInput(e.target.value);
+                    if (sanitized !== e.target.value) {
+                        e.target.value = sanitized;
+                        Server17yotk.showNotification('Вставленный текст был очищен', 'warning', 3000);
+                    }
+                }, 10);
+            }
+        });
+    });
+}
+
+// Initialize security
+document.addEventListener('DOMContentLoaded', function() {
+    addSecureInputHandlers();
+});
+
+console.log('Auth system with enhanced security initialized successfully!');
