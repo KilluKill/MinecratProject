@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - CraftWorld</title>
+    <meta name="description" content="Профиль игрока на сервере CraftWorld">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.png" alt="CraftWorld" class="logo-img">
+                    <span class="logo-text">CraftWorld</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <div class="user-info">
+                        <img src="images/avatars/user1.png" alt="CraftMaster" class="user-avatar">
+                        <span class="user-name">CraftMaster</span>
+                        <div class="user-dropdown">
+                            <a href="profile.html" class="active">Профиль</a>
+                            <a href="#" onclick="logout()">Выйти</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-main">
+        <!-- Profile Header -->
+        <section class="profile-header">
+            <div class="container">
+                <div class="profile-banner">
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <img src="images/avatars/user1.png" alt="CraftMaster" id="profile-avatar">
+                            <button class="avatar-edit" onclick="changeAvatar()">📷</button>
+                        </div>
+                        <div class="profile-details">
+                            <h1 class="profile-name">CraftMaster</h1>
+                            <div class="profile-status">
+                                <span class="status-badge vip">VIP игрок</span>
+                                <span class="online-status">🟢 Онлайн</span>
+                            </div>
+                            <div class="profile-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Minecraft ник:</span>
+                                    <span class="meta-value">craftmaster_pro</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">На сервере с:</span>
+                                    <span class="meta-value">15 января 2024</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Последний вход:</span>
+                                    <span class="meta-value">Сейчас</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-primary" onclick="editProfile()">
+                            <span class="btn-icon">✏️</span>
+                            Редактировать профиль
+                        </button>
+                        <button class="btn btn-secondary" onclick="shareProfile()">
+                            <span class="btn-icon">📤</span>
+                            Поделиться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Content -->
+        <section class="profile-content">
+            <div class="container">
+                <div class="profile-layout">
+                    <!-- Profile Sidebar -->
+                    <aside class="profile-sidebar">
+                        <nav class="profile-nav">
+                            <ul class="nav-list">
+                                <li class="nav-item active" data-tab="overview">
+                                    <span class="nav-icon">📊</span>
+                                    <span class="nav-text">Обзор</span>
+                                </li>
+                                <li class="nav-item" data-tab="statistics">
+                                    <span class="nav-icon">📈</span>
+                                    <span class="nav-text">Статистика</span>
+                                </li>
+                                <li class="nav-item" data-tab="achievements">
+                                    <span class="nav-icon">🏆</span>
+                                    <span class="nav-text">Достижения</span>
+                                </li>
+                                <li class="nav-item" data-tab="donations">
+                                    <span class="nav-icon">💰</span>
+                                    <span class="nav-text">Донаты</span>
+                                </li>
+                                <li class="nav-item" data-tab="friends">
+                                    <span class="nav-icon">👥</span>
+                                    <span class="nav-text">Друзья</span>
+                                </li>
+                                <li class="nav-item" data-tab="settings">
+                                    <span class="nav-icon">⚙️</span>
+                                    <span class="nav-text">Настройки</span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <!-- Profile Main Content -->
+                    <div class="profile-main-content">
+                        <!-- Overview Tab -->
+                        <div id="overview" class="tab-content active">
+                            <div class="tab-header">
+                                <h2>Обзор профиля</h2>
+                            </div>
+
+                            <!-- Quick Stats -->
+                            <div class="quick-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">⏱️</div>
+                                    <div class="stat-info">
+                                        <div class="stat-number">247</div>
+                                        <div class="stat-label">Часов в игре</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">🏆</div>
+                                    <div class="stat-info">
+                                        <div class="stat-number">23</div>
+                                        <div class="stat-label">Достижений</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">💰</div>
+                                    <div class="stat-info">
+                                        <div class="stat-number">15,420</div>
+                                        <div class="stat-label">Монет</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">👥</div>
+                                    <div class="stat-info">
+                                        <div class="stat-number">12</div>
+                                        <div class="stat-label">Друзей</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recent Activity -->
+                            <div class="section-card">
+                                <div class="card-header">
+                                    <h3>Последняя активность</h3>
+                                    <a href="#" class="card-link">Показать все</a>
+                                </div>
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">🏆</div>
+                                        <div class="activity-content">
+                                            <div class="activity-text">Получено достижение "Мастер строитель"</div>
+                                            <div class="activity-time">2 часа назад</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">💬</div>
+                                        <div class="activity-content">
+                                            <div class="activity-text">Создана тема "Новые возможности сервера" на форуме</div>
+                                            <div class="activity-time">5 часов назад</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">💰</div>
+                                        <div class="activity-content">
+                                            <div class="activity-text">Куплен VIP статус</div>
+                                            <div class="activity-time">1 день назад</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress -->
+                            <div class="section-card">
+                                <div class="card-header">
+                                    <h3>Прогресс</h3>
+                                </div>
+                                <div class="progress-list">
+                                    <div class="progress-item">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Уровень игрока</span>
+                                            <span class="progress-value">42 / 50</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 84%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Опыт строительства</span>
+                                            <span class="progress-value">1,247 / 2,000</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 62%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Репутация</span>
+                                            <span class="progress-value">89 / 100</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill good" style="width: 89%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Tab -->
+                        <div id="statistics" class="tab-content">
+                            <div class="tab-header">
+                                <h2>Детальная статистика</h2>
+                            </div>
+
+                            <div class="stats-grid">
+                                <div class="stats-category">
+                                    <h3>Игровое время</h3>
+                                    <div class="stats-list">
+                                        <div class="stat-row">
+                                            <span class="stat-name">Всего в игре</span>
+                                            <span class="stat-value">247 часов 32 минуты</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">В этом месяце</span>
+                                            <span class="stat-value">42 часа 15 минут</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Средняя сессия</span>
+                                            <span class="stat-value">2 часа 18 минут</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="stats-category">
+                                    <h3>Строительство</h3>
+                                    <div class="stats-list">
+                                        <div class="stat-row">
+                                            <span class="stat-name">Блоков поставлено</span>
+                                            <span class="stat-value">1,247,832</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Блоков сломано</span>
+                                            <span class="stat-value">892,156</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Построек создано</span>
+                                            <span class="stat-value">47</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="stats-category">
+                                    <h3>Сражения</h3>
+                                    <div class="stats-list">
+                                        <div class="stat-row">
+                                            <span class="stat-name">Мобов убито</span>
+                                            <span class="stat-value">3,421</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">PvP побед</span>
+                                            <span class="stat-value">89</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Смертей</span>
+                                            <span class="stat-value">156</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="stats-category">
+                                    <h3>Экономика</h3>
+                                    <div class="stats-list">
+                                        <div class="stat-row">
+                                            <span class="stat-name">Текущий баланс</span>
+                                            <span class="stat-value">15,420 монет</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Всего заработано</span>
+                                            <span class="stat-value">89,340 монет</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span class="stat-name">Потрачено</span>
+                                            <span class="stat-value">73,920 монет</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievements Tab -->
+                        <div id="achievements" class="tab-content">
+                            <div class="tab-header">
+                                <h2>Достижения</h2>
+                                <div class="achievements-progress">
+                                    <span>23 из 50 достижений получено</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 46%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="achievements-grid">
+                                <div class="achievement-card earned">
+                                    <div class="achievement-icon">🏠</div>
+                                    <div class="achievement-info">
+                                        <h4>Первый дом</h4>
+                                        <p>Постройте свой первый дом</p>
+                                        <div class="achievement-date">Получено 15.01.2024</div>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-card earned">
+                                    <div class="achievement-icon">⚔️</div>
+                                    <div class="achievement-info">
+                                        <h4>Воин</h4>
+                                        <p>Убейте 100 мобов</p>
+                                        <div class="achievement-date">Получено 16.01.2024</div>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-card earned rare">
+                                    <div class="achievement-icon">🏆</div>
+                                    <div class="achievement-info">
+                                        <h4>Мастер строитель</h4>
+                                        <p>Постройте 10 уникальных зданий</p>
+                                        <div class="achievement-date">Получено 2 часа назад</div>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-card locked">
+                                    <div class="achievement-icon">👑</div>
+                                    <div class="achievement-info">
+                                        <h4>Король сервера</h4>
+                                        <p>Наберите 1000 часов игрового времени</p>
+                                        <div class="achievement-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 25%"></div>
+                                            </div>
+                                            <span>247 / 1000 часов</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-card locked">
+                                    <div class="achievement-icon">💎</div>
+                                    <div class="achievement-info">
+                                        <h4>Миллионер</h4>
+                                        <p>Накопите 1,000,000 монет</p>
+                                        <div class="achievement-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 1.5%"></div>
+                                            </div>
+                                            <span>15,420 / 1,000,000 монет</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-card locked">
+                                    <div class="achievement-icon">🌟</div>
+                                    <div class="achievement-info">
+                                        <h4>Легенда</h4>
+                                        <p>Получите все остальные достижения</p>
+                                        <div class="achievement-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 46%"></div>
+                                            </div>
+                                            <span>23 / 50 достижений</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Donations Tab -->
+                        <div id="donations" class="tab-content">
+                            <div class="tab-header">
+                                <h2>История донатов</h2>
+                                <div class="donation-summary">
+                                    <span>Всего поддержано: <strong>₽1,500</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="donations-list">
+                                <div class="donation-item">
+                                    <div class="donation-info">
+                                        <div class="donation-product">VIP статус</div>
+                                        <div class="donation-date">15.01.2024 14:30</div>
+                                    </div>
+                                    <div class="donation-amount">₽500</div>
+                                    <div class="donation-status success">Активен</div>
+                                </div>
+
+                                <div class="donation-item">
+                                    <div class="donation-info">
+                                        <div class="donation-product">10,000 монет</div>
+                                        <div class="donation-date">10.01.2024 16:45</div>
+                                    </div>
+                                    <div class="donation-amount">₽300</div>
+                                    <div class="donation-status success">Выдано</div>
+                                </div>
+
+                                <div class="donation-item">
+                                    <div class="donation-info">
+                                        <div class="donation-product">Набор строителя</div>
+                                        <div class="donation-date">05.01.2024 12:20</div>
+                                    </div>
+                                    <div class="donation-amount">₽700</div>
+                                    <div class="donation-status success">Выдано</div>
+                                </div>
+                            </div>
+
+                            <div class="donation-actions">
+                                <a href="donate.html" class="btn btn-primary">
+                                    <span class="btn-icon">💰</span>
+                                    Поддержать сервер
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Friends Tab -->
+                        <div id="friends" class="tab-content">
+                            <div class="tab-header">
+                                <h2>Список друзей</h2>
+                                <div class="friends-count">12 друзей</div>
+                            </div>
+
+                            <div class="friends-list">
+                                <div class="friend-item">
+                                    <div class="friend-avatar">
+                                        <img src="images/avatars/user2.png" alt="BuilderPro">
+                                        <div class="friend-status online"></div>
+                                    </div>
+                                    <div class="friend-info">
+                                        <div class="friend-name">BuilderPro</div>
+                                        <div class="friend-status-text">Онлайн</div>
+                                    </div>
+                                    <div class="friend-actions">
+                                        <button class="btn-icon" title="Написать сообщение">💬</button>
+                                        <button class="btn-icon" title="Пригласить в игру">🎮</button>
+                                    </div>
+                                </div>
+
+                                <div class="friend-item">
+                                    <div class="friend-avatar">
+                                        <img src="images/avatars/user3.png" alt="ArchitectX">
+                                        <div class="friend-status offline"></div>
+                                    </div>
+                                    <div class="friend-info">
+                                        <div class="friend-name">ArchitectX</div>
+                                        <div class="friend-status-text">Был 2 часа назад</div>
+                                    </div>
+                                    <div class="friend-actions">
+                                        <button class="btn-icon" title="Написать сообщение">💬</button>
+                                        <button class="btn-icon" title="Удалить из друзей">❌</button>
+                                    </div>
+                                </div>
+
+                                <div class="friend-item">
+                                    <div class="friend-avatar">
+                                        <img src="images/avatars/user4.png" alt="MinerPro">
+                                        <div class="friend-status online"></div>
+                                    </div>
+                                    <div class="friend-info">
+                                        <div class="friend-name">MinerPro</div>
+                                        <div class="friend-status-text">Онлайн</div>
+                                    </div>
+                                    <div class="friend-actions">
+                                        <button class="btn-icon" title="Написать сообщение">💬</button>
+                                        <button class="btn-icon" title="Пригласить в игру">🎮</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="friends-actions">
+                                <button class="btn btn-primary" onclick="addFriend()">
+                                    <span class="btn-icon">➕</span>
+                                    Добавить друга
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Settings Tab -->
+                        <div id="settings" class="tab-content">
+                            <div class="tab-header">
+                                <h2>Настройки профиля</h2>
+                            </div>
+
+                            <div class="settings-sections">
+                                <div class="settings-section">
+                                    <h3>Основные настройки</h3>
+                                    <form class="settings-form">
+                                        <div class="form-group">
+                                            <label for="display-name">Отображаемое имя</label>
+                                            <input type="text" id="display-name" class="form-input" value="CraftMaster">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bio">О себе</label>
+                                            <textarea id="bio" class="form-input" rows="3" placeholder="Расскажите о себе...">Опытный строитель и любитель приключений на CraftWorld!</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="location">Местоположение</label>
+                                            <input type="text" id="location" class="form-input" value="Россия" placeholder="Ваше местоположение">
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="settings-section">
+                                    <h3>Приватность</h3>
+                                    <div class="settings-form">
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Показывать статистику</div>
+                                                <div class="setting-desc">Другие игроки смогут видеть вашу статистику</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Показывать время в игре</div>
+                                                <div class="setting-desc">Отображать время последнего входа</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Разрешить добавление в друзья</div>
+                                                <div class="setting-desc">Другие игроки смогут отправлять заявки в друзья</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="settings-section">
+                                    <h3>Уведомления</h3>
+                                    <div class="settings-form">
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Email уведомления</div>
+                                                <div class="setting-desc">Получать уведомления на email</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Уведомления о новостях</div>
+                                                <div class="setting-desc">Получать уведомления о новостях сервера</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+
+                                        <div class="setting-item">
+                                            <div class="setting-info">
+                                                <div class="setting-name">Уведомления о друзьях</div>
+                                                <div class="setting-desc">Уведомления когда друзья заходят в игру</div>
+                                            </div>
+                                            <label class="toggle">
+                                                <input type="checkbox">
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="settings-actions">
+                                    <button class="btn btn-primary" onclick="saveSettings()">
+                                        <span class="btn-icon">💾</span>
+                                        Сохранить изменения
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="resetSettings()">
+                                        Сбросить
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CraftWorld</h4>
+                    <p>Лучший Minecraft сервер для всех любителей игры. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="help.html">Помощь</a></li>
+                        <li><a href="ban-appeal.html">Разбан</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Discord</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CraftWorld. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
