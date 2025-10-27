@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - 17yotk</title>
+    <meta name="description" content="Создайте аккаунт на сервере 17yotk и присоединяйтесь к нашему сообществу">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">17yotk</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Войти</a>
+                    <a href="register.html" class="btn btn-primary active">Регистрация</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <h1>Присоединяйтесь к 17yotk!</h1>
+                    <p>Создайте аккаунт и станьте частью нашего удивительного сообщества</p>
+                </div>
+
+                <form class="auth-form" id="register-form">
+                    <div class="form-group">
+                        <label for="username">Имя пользователя</label>
+                        <input type="text" id="username" name="username" class="form-input" required 
+                               placeholder="Введите имя пользователя" minlength="3" maxlength="20">
+                        <div class="input-icon">👤</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email адрес</label>
+                        <input type="email" id="email" name="email" class="form-input" required 
+                               placeholder="your@email.com">
+                        <div class="input-icon">📧</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minecraft-nick">Minecraft ник</label>
+                        <input type="text" id="minecraft-nick" name="minecraft-nick" class="form-input" required 
+                               placeholder="Ваш игровой ник" minlength="3" maxlength="16">
+                        <div class="input-icon">🎮</div>
+                        <div class="field-hint">Убедитесь, что ник указан правильно - его нельзя будет изменить</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Пароль</label>
+                        <input type="password" id="reg-password" name="password" class="form-input" required 
+                               placeholder="Создайте надежный пароль" minlength="6">
+                        <div class="input-icon">🔒</div>
+                        <button type="button" class="password-toggle" onclick="togglePassword('reg-password')">👁️</button>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <div class="strength-text"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Подтвердите пароль</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-input" required 
+                               placeholder="Повторите пароль">
+                        <div class="input-icon">🔒</div>
+                        <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">👁️</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referral-code">Реферальный код (необязательно)</label>
+                        <input type="text" id="referral-code" name="referral-code" class="form-input" 
+                               placeholder="Код от друга">
+                        <div class="input-icon">🎁</div>
+                        <div class="field-hint">Получите бонусы, если у вас есть код от друга</div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="agree-terms" id="agree-terms" required>
+                            <span class="checkmark"></span>
+                            Я согласен с <a href="terms.html" target="_blank">условиями использования</a> 
+                            и <a href="privacy.html" target="_blank">политикой конфиденциальности</a>
+                        </label>
+                        
+                        <label class="checkbox-container">
+                            <input type="checkbox" name="newsletter" id="newsletter">
+                            <span class="checkmark"></span>
+                            Получать новости и обновления сервера
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large auth-submit">
+                        Создать аккаунт
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>или</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="btn-social btn-social-vk" onclick="socialLogin('vk')">
+                            <span class="social-icon">VK</span>
+                            Регистрация через VK
+                        </button>
+                        <button type="button" class="btn-social btn-social-discord" onclick="socialLogin('discord')">
+                            <span class="social-icon">💬</span>
+                            Регистрация через Discord
+                        </button>
+                        <button type="button" class="btn-social btn-social-google" onclick="socialLogin('google')">
+                            <span class="social-icon">G</span>
+                            Регистрация через Google
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+                </div>
+
+                <div class="terms-privacy">
+                    Регистрируясь, вы соглашаетесь с нашими 
+                    <a href="terms.html">условиями использования</a> и 
+                    <a href="privacy.html">политикой конфиденциальности</a>. 
+                    Мы используем ваши данные только для работы сервера и никогда не передаем их третьим лицам.
+                </div>
+            </div>
+
+            <div class="auth-info">
+                <div class="info-card">
+                    <div class="info-icon">🌟</div>
+                    <h3>Бесплатная регистрация</h3>
+                    <p>Создайте аккаунт совершенно бесплатно и получите доступ ко всем базовым функциям</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎁</div>
+                    <h3>Приветственные бонусы</h3>
+                    <p>Новые игроки получают стартовый набор и игровую валюту для быстрого старта</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🛡️</div>
+                    <h3>Защита данных</h3>
+                    <p>Ваши данные надежно защищены современными методами шифрования</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h3>Мгновенный доступ</h3>
+                    <p>После регистрации вы сразу сможете зайти на сервер и начать играть</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Verification Modal -->
+        <div id="email-verification-modal" class="modal" style="display: none;">
+            <div class="modal-overlay" onclick="closeEmailModal()"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Подтвердите email</h3>
+                    <button class="modal-close" onclick="closeEmailModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="verification-success">
+                        <div class="success-icon">✅</div>
+                        <h4>Регистрация почти завершена!</h4>
+                        <p>Мы отправили письмо с подтверждением на ваш email адрес. Перейдите по ссылке в письме, чтобы активировать аккаунт.</p>
+                        <div class="email-tips">
+                            <h5>Не получили письмо?</h5>
+                            <ul>
+                                <li>Проверьте папку "Спам" или "Нежелательная почта"</li>
+                                <li>Убедитесь, что указали правильный email адрес</li>
+                                <li>Письмо может идти до 10 минут</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="resendEmail()">Отправить повторно</button>
+                    <button class="btn btn-primary" onclick="closeEmailModal()">Понятно</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>17yotk</h4>
+                    <p>Лучший Minecraft сервер для всех любителей игры. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="help.html">Помощь</a></li>
+                        <li><a href="ban-appeal.html">Разбан</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Discord</a>
+                        <a href="#" class="social-link">YouTube</a>
+                        <a href="#" class="social-link">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 17yotk. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

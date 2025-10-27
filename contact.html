@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - 17yotk</title>
+    <meta name="description" content="Свяжитесь с администрацией сервера 17yotk - поддержка, предложения, жалобы">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo-icon">🎮</div>
+                    <span class="logo-text">17yotk</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Главная</a></li>
+                    <li><a href="index.html#about" class="nav-link">О сервере</a></li>
+                    <li><a href="donate.html" class="nav-link">Донат</a></li>
+                    <li><a href="forum.html" class="nav-link">Форум</a></li>
+                    <li><a href="rules.html" class="nav-link">Правила</a></li>
+                    <li><a href="contact.html" class="nav-link active">Контакты</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Войти</a>
+                    <a href="register.html" class="btn btn-primary">Регистрация</a>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-main">
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Свяжитесь с нами</h1>
+                    <p class="hero-subtitle">Мы всегда готовы помочь и ответить на ваши вопросы</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-text">Быстрый ответ</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-text">24/7 поддержка</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">💬</div>
+                            <div class="feature-text">Дружелюбная команда</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods -->
+        <section class="contact-methods">
+            <div class="container">
+                <h2 class="section-title">Способы связи</h2>
+                <div class="methods-grid">
+                    <div class="method-card primary">
+                        <div class="method-icon">💬</div>
+                        <h3>Discord</h3>
+                        <p>Самый быстрый способ связи с администрацией и общения с игроками</p>
+                        <div class="method-info">
+                            <span class="info-label">Сервер:</span>
+                            <span class="info-value">discord.gg/17yotk</span>
+                        </div>
+                        <div class="method-stats">
+                            <div class="stat">
+                                <span class="stat-number">1,247</span>
+                                <span class="stat-label">участников</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">127</span>
+                                <span class="stat-label">онлайн</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" onclick="joinDiscord()">
+                            <span class="btn-icon">💬</span>
+                            Присоединиться
+                        </a>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>Для официальных обращений, жалоб и предложений</p>
+                        <div class="method-info">
+                            <span class="info-label">Адрес:</span>
+                            <span class="info-value">admin@17yotk.ru</span>
+                        </div>
+                        <div class="method-response">
+                            <span class="response-time">⏱️ Ответ в течение 24 часов</span>
+                        </div>
+                        <a href="mailto:admin@17yotk.ru" class="btn btn-secondary">
+                            <span class="btn-icon">📧</span>
+                            Написать письмо
+                        </a>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">📱</div>
+                        <h3>Telegram</h3>
+                        <p>Быстрая связь с администрацией и получение уведомлений</p>
+                        <div class="method-info">
+                            <span class="info-label">Канал:</span>
+                            <span class="info-value">@server17yotk</span>
+                        </div>
+                        <div class="method-stats">
+                            <div class="stat">
+                                <span class="stat-number">856</span>
+                                <span class="stat-label">подписчиков</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-secondary" onclick="joinTelegram()">
+                            <span class="btn-icon">📱</span>
+                            Подписаться
+                        </a>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-icon">🎮</div>
+                        <h3>В игре</h3>
+                        <p>Обратитесь к администраторам прямо на сервере</p>
+                        <div class="method-info">
+                            <span class="info-label">Команда:</span>
+                            <span class="info-value">/ticket создать</span>
+                        </div>
+                        <div class="admin-list">
+                            <div class="admin-item">
+                                <span class="admin-name">Admin_17yotk</span>
+                                <span class="admin-status online">онлайн</span>
+                            </div>
+                            <div class="admin-item">
+                                <span class="admin-name">Moderator_Alex</span>
+                                <span class="admin-status offline">офлайн</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" onclick="copyIP()">
+                            <span class="btn-icon">🎮</span>
+                            Подключиться к серверу
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form-section">
+            <div class="container">
+                <div class="form-layout">
+                    <div class="form-info">
+                        <h2>Напишите нам</h2>
+                        <p>Заполните форму ниже, и мы обязательно вам ответим. Все обращения рассматриваются в порядке поступления.</p>
+                        
+                        <div class="contact-features">
+                            <div class="contact-feature">
+                                <div class="feature-icon">✅</div>
+                                <div class="feature-content">
+                                    <h4>Гарантированный ответ</h4>
+                                    <p>Отвечаем на все обращения в течение 24 часов</p>
+                                </div>
+                            </div>
+                            <div class="contact-feature">
+                                <div class="feature-icon">🔒</div>
+                                <div class="feature-content">
+                                    <h4>Конфиденциальность</h4>
+                                    <p>Ваши данные надежно защищены и не передаются третьим лицам</p>
+                                </div>
+                            </div>
+                            <div class="contact-feature">
+                                <div class="feature-icon">⚡</div>
+                                <div class="feature-content">
+                                    <h4>Быстрое решение</h4>
+                                    <p>Стараемся решить большинство вопросов в кратчайшие сроки</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="working-hours">
+                            <h4>Время работы поддержки</h4>
+                            <div class="hours-list">
+                                <div class="hours-item">
+                                    <span class="day">Понедельник - Пятница</span>
+                                    <span class="time">10:00 - 22:00</span>
+                                </div>
+                                <div class="hours-item">
+                                    <span class="day">Суббота - Воскресенье</span>
+                                    <span class="time">12:00 - 20:00</span>
+                                </div>
+                            </div>
+                            <p class="hours-note">* В экстренных случаях администрация доступна 24/7</p>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Ваше имя *</label>
+                                    <input type="text" id="name" name="name" class="form-input" required 
+                                           placeholder="Введите ваше имя">
+                                </div>
+                                <div class="form-group">
+                                    <label for="minecraft-nick">Minecraft ник</label>
+                                    <input type="text" id="minecraft-nick" name="minecraft-nick" class="form-input" 
+                                           placeholder="Ваш игровой ник">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email адрес *</label>
+                                <input type="email" id="email" name="email" class="form-input" required 
+                                       placeholder="your@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Тема обращения *</label>
+                                <select id="subject" name="subject" class="form-input" required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="support">Техническая поддержка</option>
+                                    <option value="bug">Сообщить об ошибке</option>
+                                    <option value="suggestion">Предложение</option>
+                                    <option value="complaint">Жалоба на игрока</option>
+                                    <option value="unban">Заявка на разбан</option>
+                                    <option value="donation">Вопрос по донату</option>
+                                    <option value="partnership">Сотрудничество</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="priority">Приоритет</label>
+                                <div class="priority-options">
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="low" checked>
+                                        <span class="priority-indicator low"></span>
+                                        <span class="priority-text">Низкий</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="medium">
+                                        <span class="priority-indicator medium"></span>
+                                        <span class="priority-text">Средний</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="high">
+                                        <span class="priority-indicator high"></span>
+                                        <span class="priority-text">Высокий</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="urgent">
+                                        <span class="priority-indicator urgent"></span>
+                                        <span class="priority-text">Срочный</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Сообщение *</label>
+                                <textarea id="message" name="message" class="form-input" rows="6" required 
+                                          placeholder="Опишите ваш вопрос или проблему подробно..."></textarea>
+                                <div class="char-counter">
+                                    <span id="char-count">0</span> / 2000 символов
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="attachments">Прикрепить файлы</label>
+                                <div class="file-upload">
+                                    <input type="file" id="attachments" name="attachments" multiple 
+                                           accept=".jpg,.jpeg,.png,.gif,.pdf,.txt,.log">
+                                    <div class="file-upload-area">
+                                        <div class="upload-icon">📎</div>
+                                        <div class="upload-text">
+                                            <span class="upload-main">Перетащите файлы сюда или нажмите для выбора</span>
+                                            <span class="upload-sub">Максимум 5 файлов, до 10 МБ каждый</span>
+                                        </div>
+                                    </div>
+                                    <div class="uploaded-files" id="uploaded-files"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="agree" id="agree" required>
+                                    <span class="checkmark"></span>
+                                    Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a> 
+                                    и обработкой персональных данных
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="newsletter" id="newsletter">
+                                    <span class="checkmark"></span>
+                                    Получать уведомления о новостях сервера
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-large">
+                                    <span class="btn-icon">📤</span>
+                                    Отправить сообщение
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    Очистить форму
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-grid">
+                    <div class="faq-category">
+                        <h3>Общие вопросы</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Как подключиться к серверу?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Для подключения к серверу:</p>
+                                    <ol>
+                                        <li>Запустите Minecraft версии 1.20.4</li>
+                                        <li>Нажмите "Многопользовательская игра"</li>
+                                        <li>Добавьте новый сервер с IP: <strong>199.83.103.226:25663</strong></li>
+                                        <li>Подключитесь к серверу</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Какая версия Minecraft поддерживается?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Сервер работает на версии <strong>1.20.4</strong>. Рекомендуется использовать именно эту версию для лучшей совместимости и доступа ко всем функциям.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Есть ли правила на сервере?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Да, на сервере действуют правила. Ознакомиться с ними можно на странице <a href="rules.html">Правила сервера</a>. Соблюдение правил обязательно для всех игроков.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h3>Донат и привилегии</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Как купить донат?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Для покупки доната:</p>
+                                    <ol>
+                                        <li>Перейдите на страницу <a href="donate.html">Донат</a></li>
+                                        <li>Выберите подходящую привилегию или товар</li>
+                                        <li>Заполните форму с вашим Minecraft ником</li>
+                                        <li>Выберите способ оплаты и завершите покупку</li>
+                                        <li>Привилегии выдаются автоматически в течение 5 минут</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Можно ли вернуть донат?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Возврат доната возможен в течение 14 дней при наличии веских причин. Обратитесь к администрации через любой удобный способ связи.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h3>Технические вопросы</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Не могу подключиться к серверу</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Если вы не можете подключиться:</p>
+                                    <ul>
+                                        <li>Проверьте правильность IP адреса: <strong>199.83.103.226:25663</strong></li>
+                                        <li>Убедитесь, что используете версию 1.20.4</li>
+                                        <li>Проверьте интернет-соединение</li>
+                                        <li>Попробуйте перезапустить Minecraft</li>
+                                        <li>Если проблема сохраняется, обратитесь в поддержку</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Лаги на сервере</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>При возникновении лагов:</p>
+                                    <ul>
+                                        <li>Проверьте пинг к серверу</li>
+                                        <li>Уменьшите дальность прорисовки в настройках</li>
+                                        <li>Закройте ненужные программы</li>
+                                        <li>Сообщите администрации о проблеме</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <h3>Модерация</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Как подать жалобу на игрока?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Для подачи жалобы:</p>
+                                    <ol>
+                                        <li>Сделайте скриншоты нарушения</li>
+                                        <li>Заполните форму обратной связи, выбрав тему "Жалоба на игрока"</li>
+                                        <li>Укажите ник нарушителя и подробное описание</li>
+                                        <li>Приложите доказательства</li>
+                                        <li>Ожидайте рассмотрения (обычно 24-48 часов)</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question" onclick="toggleFAQ(this)">
+                                    <span>Как подать заявку на разбан?</span>
+                                    <span class="faq-toggle">+</span>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Для подачи заявки на разбан:</p>
+                                    <ol>
+                                        <li>Заполните форму, выбрав тему "Заявка на разбан"</li>
+                                        <li>Укажите ваш Minecraft ник</li>
+                                        <li>Опишите причину бана и ваше мнение о ситуации</li>
+                                        <li>Объясните, почему считаете бан несправедливым</li>
+                                        <li>Ожидайте рассмотрения администрацией</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Наша команда</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-emoji">👨‍💼</div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Admin_17yotk</h3>
+                            <p class="member-role">Главный администратор</p>
+                            <p class="member-desc">Основатель сервера, отвечает за общее развитие и стратегические решения</p>
+                            <div class="member-contact">
+                                <a href="#" class="contact-btn">Discord</a>
+                                <a href="#" class="contact-btn">Telegram</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-emoji">👮‍♂️</div>
+                            <div class="member-status offline"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Moderator_Alex</h3>
+                            <p class="member-role">Старший модератор</p>
+                            <p class="member-desc">Модерация чата и форума, помощь новым игрокам, решение конфликтов</p>
+                            <div class="member-contact">
+                                <a href="#" class="contact-btn">Discord</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-emoji">👨‍💻</div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>TechSupport</h3>
+                            <p class="member-role">Технический специалист</p>
+                            <p class="member-desc">Техническая поддержка, настройка плагинов, решение технических проблем</p>
+                            <div class="member-contact">
+                                <a href="#" class="contact-btn">Email</a>
+                                <a href="#" class="contact-btn">Discord</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-emoji">🎉</div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>EventManager</h3>
+                            <p class="member-role">Ивент-менеджер</p>
+                            <p class="member-desc">Организация событий, конкурсов и развлекательных мероприятий</p>
+                            <div class="member-contact">
+                                <a href="#" class="contact-btn">Discord</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>17yotk</h4>
+                    <p>Уникальный Minecraft сервер с невероятными возможностями. Присоединяйтесь к нашему сообществу!</p>
+                    <div class="server-info-footer">
+                        <div class="server-ip-footer">
+                            <span class="ip-label">IP сервера:</span>
+                            <span class="ip-value" onclick="copyIP()">199.83.103.226:25663</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="donate.html">Донат</a></li>
+                        <li><a href="forum.html">Форум</a></li>
+                        <li><a href="rules.html">Правила</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="contact.html">Связаться с нами</a></li>
+                        <li><a href="#faq">Часто задаваемые вопросы</a></li>
+                        <li><a href="contact.html#unban">Заявка на разбан</a></li>
+                        <li><a href="donate.html">Поддержать проект</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="joinDiscord()">💬</a>
+                        <a href="#" class="social-link" onclick="joinTelegram()">📱</a>
+                        <a href="#" class="social-link">📺</a>
+                        <a href="#" class="social-link">🎵</a>
+                    </div>
+                    <div class="contact-quick">
+                        <p><strong>Быстрая связь:</strong></p>
+                        <p>📧 admin@17yotk.ru</p>
+                        <p>💬 discord.gg/17yotk</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 17yotk. Все права защищены. Не является официальным продуктом Minecraft.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
